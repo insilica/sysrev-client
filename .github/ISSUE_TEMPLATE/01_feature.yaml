@@ -1,0 +1,36 @@
+name: Enhancement
+description: Create a feature or improvement request
+assignees: []
+labels:
+  - enhancement
+  - needs-grooming
+projects:
+  - insilica/12
+body:
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justification
+      description: Why is this enhancement needed? What problem does it solve?
+      placeholder: Describe the business value or user need this addresses
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: Tasks
+      description: Break down the work into specific tasks
+      placeholder: |
+        - [ ] Task 1
+        - [ ] Task 2
+        - [ ] Task 3
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Add any other context, mockups, or information that might be helpful
+      placeholder: Screenshots, related issues, examples, etc.
+    validations:
+      required: false
