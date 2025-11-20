@@ -5,6 +5,7 @@ import httpx
 
 from ...client import AuthenticatedClient, Client
 from ...models.error_response import ErrorResponse
+from ...models.label import Label
 from ...models.new_label_body import NewLabelBody
 from ...types import UNSET, Response, Unset
 
@@ -39,13 +40,20 @@ def _get_kwargs(
     return _kwargs
 
 
-def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorResponse:
+def _parse_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> ErrorResponse | Label:
+    if response.status_code == 200:
+        response_200 = Label.from_dict(response.json())
+
+        return response_200
+
     response_default = ErrorResponse.from_dict(response.json())
 
     return response_default
 
 
-def _build_response(*, client: AuthenticatedClient | Client, response: httpx.Response) -> Response[ErrorResponse]:
+def _build_response(
+    *, client: AuthenticatedClient | Client, response: httpx.Response
+) -> Response[ErrorResponse | Label]:
     return Response(
         status_code=HTTPStatus(response.status_code),
         content=response.content,
@@ -60,7 +68,7 @@ def sync_detailed(
     body: NewLabelBody,
     project_id: str | Unset = UNSET,
     quote_schema: bool | Unset = UNSET,
-) -> Response[ErrorResponse]:
+) -> Response[ErrorResponse | Label]:
     """Create a new label.
 
     Args:
@@ -73,7 +81,7 @@ def sync_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse]
+        Response[ErrorResponse | Label]
     """
 
     kwargs = _get_kwargs(
@@ -95,7 +103,7 @@ def sync(
     body: NewLabelBody,
     project_id: str | Unset = UNSET,
     quote_schema: bool | Unset = UNSET,
-) -> ErrorResponse | None:
+) -> ErrorResponse | Label | None:
     """Create a new label.
 
     Args:
@@ -108,7 +116,7 @@ def sync(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse
+        ErrorResponse | Label
     """
 
     return sync_detailed(
@@ -125,7 +133,7 @@ async def asyncio_detailed(
     body: NewLabelBody,
     project_id: str | Unset = UNSET,
     quote_schema: bool | Unset = UNSET,
-) -> Response[ErrorResponse]:
+) -> Response[ErrorResponse | Label]:
     """Create a new label.
 
     Args:
@@ -138,7 +146,7 @@ async def asyncio_detailed(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        Response[ErrorResponse]
+        Response[ErrorResponse | Label]
     """
 
     kwargs = _get_kwargs(
@@ -158,7 +166,7 @@ async def asyncio(
     body: NewLabelBody,
     project_id: str | Unset = UNSET,
     quote_schema: bool | Unset = UNSET,
-) -> ErrorResponse | None:
+) -> ErrorResponse | Label | None:
     """Create a new label.
 
     Args:
@@ -171,7 +179,7 @@ async def asyncio(
         httpx.TimeoutException: If the request takes longer than Client.timeout.
 
     Returns:
-        ErrorResponse
+        ErrorResponse | Label
     """
 
     return (
