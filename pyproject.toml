@@ -17,7 +17,15 @@ dev-mode-dirs = ["components", "bases", "development", "."]
 dev = [
     "openapi-python-client>=0.27.1",
     "polylith-cli>=1.38.2",
+    "pytest>=9.0.1",
 ]
 
 [tool.pyright]
 extraPaths = ["bases", "components"]
+
+[tool.pytest.ini_options]
+testpaths = ["test"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"
