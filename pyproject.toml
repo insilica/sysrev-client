@@ -15,5 +15,9 @@ dev-mode-dirs = ["components", "bases", "development", "."]
 
 [dependency-groups]
 dev = [
+    "openapi-python-client>=0.27.1",
     "polylith-cli>=1.38.2",
 ]
+
+[tool.pyright]
+extraPaths = ["bases", "components"]
