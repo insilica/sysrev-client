@@ -17,6 +17,7 @@ dev-mode-dirs = ["components", "bases", "development", "."]
 dev = [
     "openapi-python-client>=0.27.1",
     "polylith-cli>=1.38.2",
+    "pytest>=9.0.1",
 ]
 
 [tool.pyright]
