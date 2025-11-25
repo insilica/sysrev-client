@@ -1,22 +1,15 @@
-"""Sysrev Client Library - Python client for the Sysrev API."""
-
-# Re-export everything from the openapi component
 from sysrev_client.openapi import *
 
 __all__ = [
-    # Client classes
     "AuthenticatedClient",
     "Client",
-    # Error types
     "UnexpectedStatus",
-    # Type utilities
     "File",
     "FileTypes",
     "RequestFiles",
     "Response",
     "UNSET",
     "Unset",
-    # Models (from openapi.gen.models)
     "Article",
     "ArticleFullText",
     "ArticleFullTextContentBlob",
@@ -79,35 +72,26 @@ __all__ = [
     "UserBillingUsage",
     "WebhookEndpoint",
     "WebhookEventTypesItems",
-    # API endpoint modules - Article
     "create_article",
     "delete_article_suppression",
     "get_article",
     "set_article_suppression",
-    # API endpoint modules - Enterprise Billing
     "get_enterprise_billing_usage",
-    # API endpoint modules - Label
     "get_label",
     "new_label",
     "set_label",
-    # API endpoint modules - Org Billing
     "get_org_auto_label_billing",
     "get_org_billing_subscription",
-    # API endpoint modules - Project
     "create_project",
     "get_project",
     "get_project_export",
     "start_project_export",
-    # API endpoint modules - Source
     "create_source",
-    # API endpoint modules - User
     "get_user",
-    # API endpoint modules - User Billing
     "get_user_billing_settings",
     "get_user_billing_subscription",
     "get_user_billing_usage",
     "update_user_billing_settings",
-    # API endpoint modules - Webhook
     "create_webhook_endpoint",
     "delete_webhook_endpoint",
     "get_webhook_endpoint",
