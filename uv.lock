@@ -575,6 +575,7 @@ source = { editable = "." }
 dev = [
     { name = "openapi-python-client" },
     { name = "polylith-cli" },
+    { name = "pytest" },
 ]
 
 [package.metadata]
