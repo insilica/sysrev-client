@@ -1,14 +1,115 @@
-from sysrev_client.openapi.gen.client import AuthenticatedClient, Client
-from sysrev_client.openapi.gen.errors import *
-from sysrev_client.openapi.gen.models import *
-from sysrev_client.openapi.gen.types import *
+"""Sysrev Client Library - Python client for the Sysrev API."""
 
-from sysrev_client.openapi.gen import api
+# Re-export everything from the openapi component
+from sysrev_client.openapi import *
 
 __all__ = [
+    # Client classes
     "AuthenticatedClient",
     "Client",
-    "api",
+    # Error types
+    "UnexpectedStatus",
+    # Type utilities
+    "File",
+    "FileTypes",
+    "RequestFiles",
+    "Response",
+    "UNSET",
+    "Unset",
+    # Models (from openapi.gen.models)
+    "Article",
+    "ArticleFullText",
+    "ArticleFullTextContentBlob",
+    "ArticleFullTextContentJson",
+    "ArticleFullTextContentJsonJsonType1",
+    "ArticleSuppressionType",
+    "AutoArticleLabel",
+    "AutoArticleLabelReasoningType0",
+    "AutoLabelAnswer",
+    "AutoLabelAnswerUpdatedRequest",
+    "AutoLabelAnswerUpdatedRequestEventType",
+    "AutoLabelRun",
+    "BillingLimitStrategy",
+    "BillingSubscription",
+    "BillingUsagePeriod",
+    "Blob",
+    "CloneProjectInput",
+    "CreateArticleInput",
+    "CreateArticleInputCitation",
+    "CreateEnterpriseInput",
+    "CreateProjectInput",
+    "CreateSourceInput",
+    "CreateWebhookEndpointBody",
+    "DeleteArticleSuppressionResponse200",
+    "DeleteWebhookEndpointResponse200",
+    "Enterprise",
+    "Error",
+    "ErrorResponse",
+    "Label",
+    "LabelSchemaType0",
+    "LabelSettings",
+    "LabelStat",
+    "NewLabelBody",
+    "NewLabelBodySchemaType0",
+    "Org",
+    "OrgInvite",
+    "OrgProject",
+    "OrgProjectAdminsItem",
+    "OrgSettings",
+    "Project",
+    "ProjectBillingSettings",
+    "ProjectBillingSettingsLimit",
+    "ProjectBillingUsage",
+    "ProjectExport",
+    "ProjectExportStatus",
+    "ProjectExportType",
+    "ProjectInvite",
+    "ProjectSettings",
+    "SetArticleSuppressionBody",
+    "SetArticleSuppressionResponse200",
+    "SetLabelBody",
+    "SetLabelBodySchemaType0",
+    "Source",
+    "StartProjectExportInput",
+    "TransferProjectInput",
+    "UpdateWebhookEndpointBody",
+    "User",
+    "UserBillingSettings",
+    "UserBillingSettingsLimit",
+    "UserBillingUsage",
+    "WebhookEndpoint",
+    "WebhookEventTypesItems",
+    # API endpoint modules - Article
+    "create_article",
+    "delete_article_suppression",
+    "get_article",
+    "set_article_suppression",
+    # API endpoint modules - Enterprise Billing
+    "get_enterprise_billing_usage",
+    # API endpoint modules - Label
+    "get_label",
+    "new_label",
+    "set_label",
+    # API endpoint modules - Org Billing
+    "get_org_auto_label_billing",
+    "get_org_billing_subscription",
+    # API endpoint modules - Project
+    "create_project",
+    "get_project",
+    "get_project_export",
+    "start_project_export",
+    # API endpoint modules - Source
+    "create_source",
+    # API endpoint modules - User
+    "get_user",
+    # API endpoint modules - User Billing
+    "get_user_billing_settings",
+    "get_user_billing_subscription",
+    "get_user_billing_usage",
+    "update_user_billing_settings",
+    # API endpoint modules - Webhook
+    "create_webhook_endpoint",
+    "delete_webhook_endpoint",
+    "get_webhook_endpoint",
+    "update_webhook_endpoint",
 ]
-
-__all__.extend([name for name in dir() if not name.startswith("_") and name not in __all__])
