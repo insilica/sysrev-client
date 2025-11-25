@@ -1,24 +1,4 @@
-"""
-Integration tests for adding project sources and articles with full text (JSON and PDF).
-
-This test suite verifies that the Sysrev API client can:
-1. Create a project source
-2. Add articles with JSON full text
-3. Add articles with PDF full text
-
-Environment Variables:
-    SYSREV_API_KEY: API key for authentication (required)
-    SYSREV_API_URL: Base URL for the Sysrev API (optional, defaults to https://sysrev.com)
-    SYSREV_TEST_PROJECT_ID: Project ID to use for testing (required)
-
-Usage:
-(To run all the tests)
-    uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py -v
-
-(To run a specific test)
-    uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py::test_add_article_with_json_full_text -v
-
-"""
+#!/usr/bin/env python
 
 import base64
 import os
