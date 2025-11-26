@@ -25,4 +25,4 @@ packages = ["sysrev_client"]
 
 [tool.polylith.bricks]
 "../../bases/sysrev_client/lib" = "sysrev_client"
-"../../components/sysrev_client/api" = "sysrev_client/api"
+"../../components/sysrev_client/openapi" = "sysrev_client/openapi"
