@@ -66,35 +66,35 @@ The test suite covers the following scenarios:
 ### Run all tests in the file
 
 ```bash
-uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py
+uv run pytest test/components/sysrev_client/spec/test_article_full_text.py
 ```
 
 ### Run a specific test
 
 ```bash
 # Test creating a source
-uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py::test_create_source
+uv run pytest test/components/sysrev_client/spec/test_article_full_text.py::test_create_source
 
 # Test adding article with JSON full text
-uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py::test_add_article_with_json_full_text
+uv run pytest test/components/sysrev_client/spec/test_article_full_text.py::test_add_article_with_json_full_text
 
 # Test adding article with PDF full text
-uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py::test_add_article_with_pdf_full_text
+uv run pytest test/components/sysrev_client/spec/test_article_full_text.py::test_add_article_with_pdf_full_text
 
 # Test adding article with multiple full texts
-uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py::test_add_article_with_multiple_full_texts
+uv run pytest test/components/sysrev_client/spec/test_article_full_text.py::test_add_article_with_multiple_full_texts
 ```
 
 ### Run with verbose output
 
 ```bash
-uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py -v
+uv run pytest test/components/sysrev_client/spec/test_article_full_text.py -v
 ```
 
 ### Run with detailed output and print statements
 
 ```bash
-uv run pytest test/components/sysrev_client/openapi/test_article_full_text.py -vv -s
+uv run pytest test/components/sysrev_client/spec/test_article_full_text.py -vv -s
 ```
 
 
