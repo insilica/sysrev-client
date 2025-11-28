@@ -6,22 +6,22 @@ from pathlib import Path
 
 import pytest
 
-from sysrev_client.openapi.gen.api.article import create_article
-from sysrev_client.openapi.gen.api.source import create_source
-from sysrev_client.openapi.gen.client import AuthenticatedClient
-from sysrev_client.openapi.gen.models.article_full_text import ArticleFullText
-from sysrev_client.openapi.gen.models.article_full_text_content_blob import (
+from sysrev_client.spec.gen.api.article import create_article
+from sysrev_client.spec.gen.api.source import create_source
+from sysrev_client.spec.gen.client import AuthenticatedClient
+from sysrev_client.spec.gen.models.article_full_text import ArticleFullText
+from sysrev_client.spec.gen.models.article_full_text_content_blob import (
     ArticleFullTextContentBlob,
 )
-from sysrev_client.openapi.gen.models.article_full_text_content_json import (
+from sysrev_client.spec.gen.models.article_full_text_content_json import (
     ArticleFullTextContentJson,
 )
-from sysrev_client.openapi.gen.models.blob import Blob
-from sysrev_client.openapi.gen.models.create_article_input import CreateArticleInput
-from sysrev_client.openapi.gen.models.create_article_input_citation import (
+from sysrev_client.spec.gen.models.blob import Blob
+from sysrev_client.spec.gen.models.create_article_input import CreateArticleInput
+from sysrev_client.spec.gen.models.create_article_input_citation import (
     CreateArticleInputCitation,
 )
-from sysrev_client.openapi.gen.models.create_source_input import CreateSourceInput
+from sysrev_client.spec.gen.models.create_source_input import CreateSourceInput
 
 
 @pytest.fixture(scope="module")
