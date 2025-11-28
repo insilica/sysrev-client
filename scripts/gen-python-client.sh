@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 set -euo pipefail
-cd "$(dirname "${BASH_SOURCE[0]}")"
+
+# Change to the spec component directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SPEC_DIR="$SCRIPT_DIR/../components/sysrev_client/spec"
+cd "$SPEC_DIR"
 
 echo "Generating OpenAPI client..."
 uv run openapi-python-client generate \
@@ -15,6 +19,6 @@ mv temp-project/gen .
 rm -rf temp-project
 
 echo "Updating spec component exports..."
-python update_exports.py
+python "$SCRIPT_DIR/update_exports.py"
 
 echo "Done! OpenAPI client generated and exports updated."
