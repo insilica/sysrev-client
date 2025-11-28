@@ -1,3 +1,3 @@
-from sysrev_client.openapi import *
+from sysrev_client.spec import *
 
 __all__ = [name for name in globals() if not name.startswith("_")]
