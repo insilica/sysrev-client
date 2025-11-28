@@ -78,7 +78,7 @@ def main():
     print(f"Writing to {init_file.relative_to(script_dir.parent.parent.parent)}...")
     init_file.write_text(content, encoding='utf-8')
 
-    print("Done! The openapi component's __init__.py has been updated.")
+    print("Done! The spec component's __init__.py has been updated.")
 
 if __name__ == "__main__":
     main()

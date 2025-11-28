@@ -10,11 +10,11 @@ uv run openapi-python-client generate \
     --overwrite \
     --fail-on-warning
 
-# Move generated files to components/sysrev_client/openapi
+# Move generated files to components/sysrev_client/spec
 mv temp-project/gen .
 rm -rf temp-project
 
-echo "Updating openapi component exports..."
+echo "Updating spec component exports..."
 python update_exports.py
 
 echo "Done! OpenAPI client generated and exports updated."
