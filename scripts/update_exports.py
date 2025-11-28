@@ -4,7 +4,8 @@ from pathlib import Path
 
 def generate_endpoint_imports():
     script_dir = Path(__file__).parent
-    api_path = script_dir / "gen" / "api"
+    spec_dir = script_dir.parent / "components" / "sysrev_client" / "spec"
+    api_path = spec_dir / "gen" / "api"
 
     if not api_path.exists():
         raise FileNotFoundError(f"API directory not found: {api_path}")
@@ -73,9 +74,10 @@ def main():
     print("\nGenerating __init__.py content...")
     content = generate_init_file_content(imports_by_category)
     script_dir = Path(__file__).parent
-    init_file = script_dir / "__init__.py"
+    spec_dir = script_dir.parent / "components" / "sysrev_client" / "spec"
+    init_file = spec_dir / "__init__.py"
 
-    print(f"Writing to {init_file.relative_to(script_dir.parent.parent.parent)}...")
+    print(f"Writing to {init_file.relative_to(script_dir.parent)}...")
     init_file.write_text(content, encoding='utf-8')
 
     print("Done! The spec component's __init__.py has been updated.")
