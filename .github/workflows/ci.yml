@@ -1,0 +1,75 @@
+name: CI
+
+on:
+  # Run on pushes to master branch
+  push:
+    branches:
+      - master
+  # Run on all pull requests
+  pull_request:
+
+jobs:
+  test:
+    name: Test Changed Bricks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Need full history for poly diff
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Check Polylith workspace
+        run: uv run poly info
+
+      - name: Detect changed bricks
+        id: changes
+        run: |
+          # Get changed bricks since the base branch
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            # For PRs, compare against the base branch
+            git fetch origin ${{ github.base_ref }}:${{ github.base_ref }}
+            changes="$(uv run poly diff --bricks --short --since ${{ github.base_ref }})"
+          else
+            changes="$(uv run poly diff --bricks --short --since HEAD~1)"
+          fi
+
+          echo "Changed bricks: $changes"
+          echo "changes=$changes" >> $GITHUB_OUTPUT
+
+          # Check if there are any changes
+          if [ -z "$changes" ]; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Run tests for changed bricks
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          changes="${{ steps.changes.outputs.changes }}"
+
+          query="${changes//,/ or }"
+
+          echo "Running tests with query: $query"
+
+          uv run pytest -k "$query" -v --tb=short
+
+      - name: Run all tests if no changes detected
+        if: steps.changes.outputs.has_changes == 'false'
+        run: |
+          echo "No brick changes detected, running all tests as safety check"
+          uv run pytest -v --tb=short
